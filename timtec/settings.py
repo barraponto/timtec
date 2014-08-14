@@ -10,15 +10,15 @@ PROJECT_ROOT = os.path.dirname(SETTINGS_DIR)
 # Theme related options
 #
 THEMES_DIR = os.path.join(PROJECT_ROOT, 'themes')
-TIMTEC_THEME = os.getenv('TIMTEC_THEME', 'default')  # don't forget to re run collectstatic if you change the theme
+TIMTEC_THEME = os.getenv('TIMTEC_THEME', 'escoladejornalismo')  # don't forget to re run collectstatic if you change the theme
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 SITE_ID = 1
 SITE_HOME = ''
-SITE_NAME = 'Timtec'
-SITE_DOMAIN = 'timtec.com.br'
+SITE_NAME = 'Escola de Jornalismo'
+SITE_DOMAIN = 'escoladejornalismo.org'
 
 ADMINS = (
     ('Admin1', 'root@localhost'),
