@@ -311,10 +311,38 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/core.js',
     },
+    'portfolio': {
+        'source_filenames': (
+            'js/portfolio/app.js',
+            'js/portfolio/controllers.js',
+            'js/portfolio/services.js',
+            'js/portfolio/directives.js',
+            'js/directives/markdowneditor.js',
+            'js/directives/codemirror.js',
+            'js/directives/alertPopup.js',
+            'js/directives/contenteditable.js',
+            'js/directives/fixedBar.js',
+            'js/directives/sortable.js',
+        ),
+        'output_filename': 'js/portfolio.js',
+    },
+    'portfolios': {
+        'source_filenames': (
+            'js/portfolios/app.js',
+            'js/portfolios/controllers.js',
+            'js/portfolios/services.js',
+            'js/portfolios/filters.js',
+        ),
+        'output_filename': 'js/portfolios.js',
+    },
 }
 
 MOMMY_CUSTOM_FIELDS_GEN = {
     'jsonfield.JSONField': lambda: '{}',
+}
+
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
 }
 
 REST_FRAMEWORK = {
@@ -436,6 +464,9 @@ INSTALLED_APPS = (
     'course_material',
     'notes',
     'reports',
+    # Escola de Jornalismo
+    'taggit',
+    'portfolio',
     # django-metron
     'metron',
     # allauth

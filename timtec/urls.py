@@ -25,6 +25,7 @@ from forum.views import CourseForumView, QuestionView, QuestionCreateView, Quest
 from course_material.views import CourseMaterialView, FileUploadView, CourseMaterialViewSet
 from notes.views import NotesViewSet, CourseNotesView, UserNotesView
 from reports.views import UserCourseStats, CourseStatsByLessonViewSet
+from portfolio.views import PortfolioViewSet, PortfolioCreateView, PortfolioCommentViewSet, PortfolioEditView, PortfolioThumbViewSet ,PortfoliosView ,PortfolioView,PortfoliosTestView
 from rest_framework import routers
 from django_markdown import flatpages
 
@@ -50,7 +51,8 @@ router.register(r'note', NotesViewSet)
 router.register(r'user_notes', UserNotesViewSet)
 router.register(r'reports', UserCourseStats)
 router.register(r'course_stats', CourseStatsByLessonViewSet)
-
+router.register(r'portfolio', PortfolioViewSet, PortfolioCommentViewSet)
+router.register(r'portfoliothumbs', PortfolioThumbViewSet)
 
 urlpatterns = patterns(
     '',
@@ -81,6 +83,13 @@ urlpatterns = patterns(
     url(r'^forum/question/(?P<slug>[-a-zA-Z0-9_]+)/$', QuestionView.as_view(), name='forum_question'),
     url(r'^forum/question/add/(?P<course_slug>[-a-zA-Z0-9_]+)/$', QuestionCreateView.as_view(), name='forum_question_create'),
 
+    # Portfolio
+    url(r'^portfolio/(?P<username>[\w.+-]+)?/new/$', PortfolioCreateView.as_view(), name='portfolio_new'),
+    url(r'^portfolio/(?P<username>[\w.+-]+)?/(?P<pk>[1-9][0-9]*)/$', PortfolioEditView.as_view(), name='portfolio_edit'),
+    url(r'^portfolios/portfolio/(?P<username>[\w.+-]+)?/(?P<pk>[1-9][0-9]*)/$', PortfolioView.as_view(), name='portfolio_view'),
+    url(r'^(?P<username>[\w.+-]+)?/portfolios', PortfoliosView.as_view(), name='portfolios'),
+    url(r'^galleryportfolio', PortfoliosTestView.as_view(), name='portfoliohome'),
+
     # Course Material
     url(r'^course/(?P<slug>[-a-zA-Z0-9_]+)/material/file_upload/$', FileUploadView.as_view(), name='file_upload'),
     url(r'^course/(?P<slug>[-a-zA-Z0-9_]+)/material/$', CourseMaterialView.as_view(), name='course_material'),
@@ -105,12 +114,10 @@ urlpatterns = patterns(
     url(r'^pages/', include('django.contrib.flatpages.urls')),
 
     url(r'^markdown/', include('django_markdown.urls')),
-
 )
 
 if settings.TWITTER_USER != '':
     from core.views import TwitterApi
-
     urlpatterns += url(r'^api/twitter/?$', TwitterApi.as_view(), name='twitter'),
 
 
