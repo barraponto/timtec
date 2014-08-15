@@ -166,6 +166,7 @@ class CourseStudentViewSet(viewsets.ModelViewSet):
     filter_fields = ('course', 'user',)
 #     filter_backends = (filters.DjangoFilterBackend,)
     serializer_class = CourseStudentSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 class ProfessorMessageViewSet(viewsets.ModelViewSet):
