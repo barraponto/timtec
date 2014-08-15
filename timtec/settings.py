@@ -335,6 +335,13 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/portfolios.js',
     },
+    'homepage': {
+        'source_filenames': (
+            'js/homepage/app.js',
+            'js/homepage/controllers.js',
+        ),
+        'output_filename': 'js/homepage.js',
+    }
 }
 
 MOMMY_CUSTOM_FIELDS_GEN = {
@@ -467,6 +474,7 @@ INSTALLED_APPS = (
     # Escola de Jornalismo
     'taggit',
     'portfolio',
+    'homepage',
     # django-metron
     'metron',
     # allauth

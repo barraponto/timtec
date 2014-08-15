@@ -12,12 +12,13 @@ from accounts.views import CustomLoginView, ProfileEditView, ProfileView
 from forum.views import AnswerViewSet as ForumAnswerViewSet
 
 from core.views import (CourseView, CourseViewSet, CourseThumbViewSet,
-                        CourseProfessorViewSet, EnrollCourseView, HomeView,
+                        CourseProfessorViewSet, EnrollCourseView,
                         UserCoursesView, ContactView, LessonDetailView,
                         LessonViewSet, StudentProgressViewSet,
                         UserNotesViewSet, CoursesView,
                         ProfessorMessageViewSet, CourseStudentViewSet,
                         AcceptTermsView, CarouselCourseView,)
+from homepage.views import HomePageView
 
 from activities.views import AnswerViewSet
 from accounts.views import TimtecUserViewSet
@@ -56,7 +57,7 @@ router.register(r'portfoliothumbs', PortfolioThumbViewSet)
 
 urlpatterns = patterns(
     '',
-    url(r'^$', HomeView.as_view(), name='home_view'),
+    url(r'^$', HomePageView.as_view(), name='home_view'),
     url(r'^courses', CoursesView.as_view(), name='courses'),
 
     # Uncomment the next line to enable the admin:
