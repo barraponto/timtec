@@ -475,6 +475,7 @@ INSTALLED_APPS = (
     'taggit',
     'portfolio',
     'homepage',
+    'enoisoverrides',
     # django-metron
     'metron',
     # allauth
