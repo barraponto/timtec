@@ -9,14 +9,14 @@ from braces.views import LoginRequiredMixin
 from django.views.generic import UpdateView, CreateView
 
 
-class PortfolioCreateView(CreateView, LoginRequiredMixin, views.GroupRequiredMixin,):
+class CreatePortfolioView(CreateView, LoginRequiredMixin, views.GroupRequiredMixin,):
     model = Portfolio
     template_name = 'portfolio-edit.html'
     group_required = u'students'
     raise_exception = True
 
     def get_context_data(self, **kwargs):
-        context = super(PortfolioCreateView, self).get_context_data(**kwargs)
+        context = super(CreatePortfolioView, self).get_context_data(**kwargs)
         context['in_student'] = True
         if self.request.user is None:
             portfolio_user_id = self.object.user.id
@@ -26,14 +26,14 @@ class PortfolioCreateView(CreateView, LoginRequiredMixin, views.GroupRequiredMix
             return context
 
 
-class PortfolioEditView(LoginRequiredMixin, UpdateView, views.GroupRequiredMixin,):
+class UpdatePortfolioView(LoginRequiredMixin, UpdateView, views.GroupRequiredMixin,):
     model = Portfolio
     template_name = 'portfolio.html'
     group_required = u'students'
     raise_exception = True
 
     def get_context_data(self, **kwargs):
-        context = super(PortfolioEditView, self).get_context_data(**kwargs)
+        context = super(UpdatePortfolioView, self).get_context_data(**kwargs)
         context['in_student'] = True
         user = self.request.user
 
@@ -42,6 +42,38 @@ class PortfolioEditView(LoginRequiredMixin, UpdateView, views.GroupRequiredMixin
             context['portfolio_user_id'] = portfolio_user_id
 
         return context
+
+
+class PortfolioView(DetailView):
+    model = Portfolio
+    template_name = 'portfolio.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PortfolioView, self).get_context_data(**kwargs)
+        user = self.request.user
+
+        if user.is_authenticated():
+            portfolio_user_id = self.object.user.id
+            context['portfolio_user_id'] = portfolio_user_id
+
+        return context
+
+
+class UserPortfoliosView(ListView):
+    context_object_name = 'portfolios'
+    template_name = "portfolios.html"
+
+    def get_queryset(self):
+        return Portfolio.objects.all().filter(user=self.request.user)
+
+
+class PortfoliosView(ListView):
+    context_object_name = 'portfolios'
+    template_name = "portfoliohome.html"
+    paginate_by = 12
+
+    def get_queryset(self):
+        return Portfolio.objects.all().filter(home_published=True)
 
 
 class PortfolioViewSet(viewsets.ModelViewSet):
@@ -90,21 +122,6 @@ class PortfolioThumbViewSet(viewsets.ModelViewSet):
             return Response(serializer.errors, status=400)
 
 
-class PortfolioView(DetailView):
-    model = Portfolio
-    template_name = 'portfolio.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(PortfolioView, self).get_context_data(**kwargs)
-        user = self.request.user
-
-        if user.is_authenticated():
-            portfolio_user_id = self.object.user.id
-            context['portfolio_user_id'] = portfolio_user_id
-
-        return context
-
-
 class PortfolioCommentViewSet(viewsets.ModelViewSet):
     model = PortfolioComment
     lookup_field = 'id'
@@ -117,19 +134,3 @@ class PortfolioCommentViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return PortfolioComment.objects.filter(user=self.request.user)
-
-
-class PortfoliosView(ListView):
-    context_object_name = 'portfolios'
-    template_name = "portfolios.html"
-
-    def get_queryset(self):
-        return Portfolio.objects.all().filter(user=self.request.user)
-
-
-class PortfoliosTestView(ListView):
-    context_object_name = 'portfoliohome'
-    template_name = "portfoliohome.html"
-
-    def get_queryset(self):
-        return Portfolio.objects.all().filter(home_published=True)

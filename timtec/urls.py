@@ -8,7 +8,7 @@ from django.contrib import admin as django_admin
 django_admin.autodiscover()
 
 from django.views.generic import TemplateView
-from accounts.views import CustomLoginView, ProfileEditView, ProfileView
+from accounts.views import CustomLoginView, ProfileEditView
 from forum.views import AnswerViewSet as ForumAnswerViewSet
 
 from core.views import (CourseView, CourseViewSet, CourseThumbViewSet,
@@ -26,9 +26,13 @@ from forum.views import CourseForumView, QuestionView, QuestionCreateView, Quest
 from course_material.views import CourseMaterialView, FileUploadView, CourseMaterialViewSet
 from notes.views import NotesViewSet, CourseNotesView, UserNotesView
 from reports.views import UserCourseStats, CourseStatsByLessonViewSet
-from portfolio.views import PortfolioViewSet, PortfolioCreateView, PortfolioCommentViewSet, PortfolioEditView, PortfolioThumbViewSet ,PortfoliosView ,PortfolioView,PortfoliosTestView
+from portfolio.views import (PortfolioViewSet, PortfolioCommentViewSet,
+                             PortfolioThumbViewSet, PortfoliosView,
+                             UserPortfoliosView, CreatePortfolioView,
+                             PortfolioView, UpdatePortfolioView)
 from rest_framework import routers
 from django_markdown import flatpages
+from enoisoverrides.views import EnoisProfileView
 
 flatpages.register()
 
@@ -85,11 +89,16 @@ urlpatterns = patterns(
     url(r'^forum/question/add/(?P<course_slug>[-a-zA-Z0-9_]+)/$', QuestionCreateView.as_view(), name='forum_question_create'),
 
     # Portfolio
-    url(r'^portfolio/(?P<username>[\w.+-]+)?/new/$', PortfolioCreateView.as_view(), name='portfolio_new'),
-    url(r'^portfolio/(?P<username>[\w.+-]+)?/(?P<pk>[1-9][0-9]*)/$', PortfolioEditView.as_view(), name='portfolio_edit'),
-    url(r'^portfolios/portfolio/(?P<username>[\w.+-]+)?/(?P<pk>[1-9][0-9]*)/$', PortfolioView.as_view(), name='portfolio_view'),
-    url(r'^(?P<username>[\w.+-]+)?/portfolios', PortfoliosView.as_view(), name='portfolios'),
-    url(r'^galleryportfolio', PortfoliosTestView.as_view(), name='portfoliohome'),
+    url(r'^portfolios',
+        PortfoliosView.as_view(), name='portfolios'),
+    url(r'^portfolios/(?P<username>[\w.+-]+)?',
+        UserPortfoliosView.as_view(), name='user_portfolios'),
+    url(r'^portfolios/(?P<username>[\w.+-]+)?/portfolio/new/$',
+        CreatePortfolioView.as_view(), name='portfolio_new'),
+    url(r'^portfolios/(?P<username>[\w.+-]+)?/portfolio/(?P<pk>[1-9][0-9]*)/$',
+        PortfolioView.as_view(), name='portfolio_view'),
+    url(r'^portfolios/(?P<username>[\w.+-]+)?/portfolio/(?P<pk>[1-9][0-9]*)/edit$',
+        UpdatePortfolioView.as_view(), name='portfolio_edit'),
 
     # Course Material
     url(r'^course/(?P<slug>[-a-zA-Z0-9_]+)/material/file_upload/$', FileUploadView.as_view(), name='file_upload'),
@@ -104,7 +113,7 @@ urlpatterns = patterns(
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='timtec_logout'),
 
     url(r'^profile/edit/?$', ProfileEditView.as_view(), name="profile_edit"),
-    url(r'^profile/(?P<username>[\w.+-]+)?/?$', ProfileView.as_view(), name="profile"),
+    url(r'^profile/(?P<username>[\w.+-]+)?/?$', EnoisProfileView.as_view(), name="profile"),
 
     # The django-allauth
     url(r'^accounts/', include('allauth.urls')),

@@ -1,4 +1,3 @@
-__author__ = 'dali'
 from core.models import Video
 from .models import PortfolioComment, Portfolio
 from rest_framework import serializers
@@ -36,5 +35,3 @@ class PortfolioCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = PortfolioComment
         fields = ('id', 'user', 'text', 'portfolio', 'created_on',)
-
-

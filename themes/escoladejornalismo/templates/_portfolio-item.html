@@ -1,0 +1,23 @@
+<section>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumb-portfolio">
+            <img {% if portfolio.thumbnail %}src="{{portfolio.thumbnail.url}}"{% endif %} title="" alt=""/>
+            <div>
+                <div>
+                    <h2>{{ portfolio.name }}</h2>
+                    <p>{{ portfolio.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="user-data">
+            <a href="{% url 'profile' username=portfolio.user.username %}">
+                <i class="fa fa-user fa-lg"></i>
+                {% if portfolio.user.first_name or portfolio.user.last_name %}
+                {{ portfolio.user }} {{ portfolio.user }}
+                {% else %}
+                {{ portfolio.user.username }}
+                {% endif %}
+            </a>
+        </div>
+    </div>
+</section>

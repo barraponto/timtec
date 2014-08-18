@@ -7,12 +7,9 @@
             <div class="container">
                 <div class="header-portfolios">
                      {% if portfolios|length > 1 %}
-
-
                       <a href="/portfolio/{{portfolios.0.user.username}}/new" class="btn btn-lg btn-default uppercase pull-right">{% trans 'Add Portfolio' %}</a>
                 {% endif %}
                        <h1>MY PORTFOLIO</h1>
-
                 </div>
                 <div class="row">
                     {% for portfolio in portfolios %}
