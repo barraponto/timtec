@@ -69,7 +69,7 @@ class UserPortfoliosView(ListView):
 
 class PortfoliosView(ListView):
     context_object_name = 'portfolios'
-    template_name = "portfoliohome.html"
+    template_name = "portfolios.html"
     paginate_by = 12
 
     def get_queryset(self):
