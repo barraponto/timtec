@@ -12,7 +12,7 @@ class EnoisProfileView(ProfileView):
 
 class TeachersView(ListView):
     context_object_name = 'teachers'
-    template = 'teachers.html'
+    template_name = 'teachers.html'
 
     def get_queryset(self):
         return TimtecUser.objects.all().filter(groups=2)
