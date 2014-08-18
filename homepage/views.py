@@ -23,5 +23,5 @@ class HomePageView(DetailView):
         context['courses_slides'] = chunked(context['homepage'].promoted_courses.all(), 3)
         context['menthors_slides'] = chunked(context['homepage'].promoted_menthors.all(), 3)
         context['promoted_portfolios'] = Portfolio.objects.filter(
-            home_published=True, status='published').order_by('-timestamp')
+            home_published=True, status='published').order_by('-timestamp')[:8]
         return context
