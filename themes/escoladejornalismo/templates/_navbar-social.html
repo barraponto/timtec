@@ -1,0 +1,31 @@
+{% load i18n %}
+<ul class="nav navbar-nav navbar-right nav-social ">
+    {% if not user.is_authenticated %}
+    <li>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans 'Sign In' %}</a>
+        <div class="dropdown-menu">
+            {% include '_navbar-login.html' %}
+        </div>
+    </li>
+    <li>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans 'Sign Up' %}</a>
+        <div class="dropdown-menu">
+            {% include '_navbar-signup.html' %}
+        </div>
+    </li>
+    {% endif %}
+    <li>
+        <button class="btn btn-link fa-stack fa-fw btn-social">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+        </button>
+        <button class="btn btn-link fa-stack fa-fw btn-social">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+        </button>
+        <button class="btn btn-link fa-stack fa-fw btn-social">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+        </button>
+    </li>
+</ul>
