@@ -1,0 +1,20 @@
+<div id="mentores">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 mentores-text">
+                <h2>{{ homepage.promoted_menthors_lead }}</h2>
+                <p>{{ homepage.promoted_menthors_message }}</p>
+                <div class="container-btn-section2">
+                    <a class="btn btn-outline-inverse btn-lg btn-section2" href="#">
+                        {{ homepage.promoted_menthors_button }}
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-6 mentores-data">
+                <div class="slider-mentores">
+                  {% include '_homepage-promoted-menthors-carousel.html' with slides=menthors_slides %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

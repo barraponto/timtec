@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load compressed %}
+
+{% block js %}
+    {{ block.super }}
+    {% compressed_js 'core' %}
+    {% compressed_js 'homepage' %}
+{% endblock %}
+
+{% block content %}
+<div ng-app="homepage">
+  {% include "_homepage-greeting.html" %}
+  {% include "_homepage-promoted-courses.html"%}
+  {% include "_homepage-promoted-menthors.html"%}
+  {% include "_homepage-promoted-portfolios.html"%}
+  {% include "_homepage-brand.html"%}
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+#portfolio-user {
+  .video {
+    .top(25px);
+  }
+}
+
+#portfolio-user .thumbnail {
+  img {
+    filter: url('../js/filters.svg#grayscale'); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Webkit Nightlies & Google Chrome Canary */
+  }
+  img:hover{
+    filter: none; /* Applies to FF + IE */
+    -webkit-filter: grayscale(0);
+  }
+}

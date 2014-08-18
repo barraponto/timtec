@@ -1,0 +1,33 @@
+<div id="portfolio">
+    <div class="container">
+        <div class="header-portfolios">
+            <h1>{{ homepage.promoted_portfolios_lead }}</h1>
+            <h2>{{ homepage.promoted_portfolios_message }}</h2>
+        </div>
+        <div class="row">
+            {% for portfolio in promoted_portfolios %}
+            <div class="col-sm-6 col-md-3">
+                <div class="item-portfolio">
+                    <img src="{% if portfolio.thumbnail  %}{{ portfolio.thumbnail.url }}{% endif %}" alt="" title=""/>
+                    <div class="caption">
+                        <a href="{% url 'portfolio_view' username=portfolio.user.username pk=portfolio.pk %}">
+                            {{ portfolio.name }}
+                        </a>
+                        <p>{{ portfolio.description }}</p>
+                    </div>
+                </div>
+                <div class="user-data">
+                    <a href="{% url 'profile' username=portfolio.user.username %}">
+                        <i class="fa fa-user fa-lg"></i>{{portfolio.user.first_name}} {{portfolio.user.last_name}}
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container-btn-section2">
+        <a class="btn btn-outline-inverse btn-lg btn-section2" href="{% url 'portfoliohome' %}">
+            {{ homepage.promoted_portfolios_button }}
+        </a>
+    </div>
+</div>

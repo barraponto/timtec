@@ -1,0 +1,22 @@
+<div id="enois">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div id="enois-pic">
+                    <img
+                    {% if homepage.brand_logo %}style="content:url({{ homepage.brand_logo.url }})"{% endif %}
+                    class="img-responsive">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="text">
+                    <h3>{{ homepage.brand_lead }}</h3>
+                    <p class="line1">{{ homepage.brand_message }}</p>
+                    <a class="btn btn-outline-inverse btn-lg btn-section1" 
+                        target="_blank" href="http://enoisconteudo.com.br/">
+                        {{ homepage.brand_button }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

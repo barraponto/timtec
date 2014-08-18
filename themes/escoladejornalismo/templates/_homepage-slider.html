@@ -1,0 +1,40 @@
+<div class="slider" ng-controller="CoursesCarouselCtrl">
+    <carousel interval="myInterval">
+        {% for slide in slides %}
+        <slide>
+            {% for course in slide %}
+            <div class="lock course col-md-4 col-sm-6 col-xs-12">
+                <a href="{% url 'course_intro' course.slug %}" class="course-link">
+                    <div class="thumb-wrapper">
+                        <span class="mouseover"></span>
+                        <span class="thumb"
+                            {% if course.home_thumbnail %}
+                            style="background-image: url({{ course.home_thumbnail.url }})"
+                            {% endif %}></span>
+                    </div>
+                    <div class="info">
+                        <p class="abstract">{{ course.abstract }}</p>
+                    </div>
+                    <div class="enroll-student">
+                        <span class="student-number">
+                            <i class="fa fa-users fa-fw"></i>{{ course.students.all|length }} alunos
+                        </span>
+                        <span class="enroll-link">
+                            <button type="button" class="btn btn-success">
+                                Ir para o curso
+                            </button>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </slide>
+        {% empty %}
+        <slide>
+            <div class="lock course col-md-4 col-sm-6 col-xs-12">
+                No Courses have been created yet.
+            </div>
+        </slide>
+        {% endfor %}
+    </carousel>
+</div>

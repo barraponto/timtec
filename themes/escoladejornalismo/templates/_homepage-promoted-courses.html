@@ -1,0 +1,14 @@
+<section id="courses">
+    <div class="container">
+        <div class="header-courses">
+            <h1>{{ homepage.promoted_courses_lead }}</h1>
+            <h2>{{ homepage.promoted_courses_message }}</h2>
+        </div>
+        {% include "_homepage-promoted-courses-carousel.html" with slides=courses_slides %}
+        <div class="container-btn-section2">
+            <a class="btn btn-outline-inverse btn-lg btn-section2" href="{% url 'courses' %}">
+                {{ homepage.promoted_courses_button }}
+            </a>
+        </div>
+    </div>
+</section>
