@@ -61,7 +61,7 @@ class PortfolioView(DetailView):
 
 class UserPortfoliosView(ListView):
     context_object_name = 'portfolios'
-    template_name = "portfolios.html"
+    template_name = "user-portfolios.html"
 
     def get_queryset(self):
         return Portfolio.objects.all().filter(user=self.request.user)
