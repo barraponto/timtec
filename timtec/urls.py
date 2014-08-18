@@ -32,7 +32,7 @@ from portfolio.views import (PortfolioViewSet, PortfolioCommentViewSet,
                              PortfolioView, UpdatePortfolioView)
 from rest_framework import routers
 from django_markdown import flatpages
-from enoisoverrides.views import EnoisProfileView
+from enoisoverrides.views import EnoisProfileView, TeachersView
 
 flatpages.register()
 
@@ -99,6 +99,9 @@ urlpatterns = patterns(
         PortfolioView.as_view(), name='portfolio_view'),
     url(r'^portfolios/(?P<username>[\w.+-]+)?/portfolio/(?P<pk>[1-9][0-9]*)/edit$',
         UpdatePortfolioView.as_view(), name='portfolio_edit'),
+
+    # Teachers
+    url(r'^teachers', TeachersView.as_view(), name='teachers'),
 
     # Course Material
     url(r'^course/(?P<slug>[-a-zA-Z0-9_]+)/material/file_upload/$', FileUploadView.as_view(), name='file_upload'),
