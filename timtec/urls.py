@@ -89,9 +89,9 @@ urlpatterns = patterns(
     url(r'^forum/question/add/(?P<course_slug>[-a-zA-Z0-9_]+)/$', QuestionCreateView.as_view(), name='forum_question_create'),
 
     # Portfolio
-    url(r'^portfolios',
+    url(r'^portfolios/$',
         PortfoliosView.as_view(), name='portfolios'),
-    url(r'^portfolios/(?P<username>[\w.+-]+)?',
+    url(r'^portfolios/(?P<username>[\w.+-]+)?/$',
         UserPortfoliosView.as_view(), name='user_portfolios'),
     url(r'^portfolios/(?P<username>[\w.+-]+)?/portfolio/new/$',
         CreatePortfolioView.as_view(), name='portfolio_new'),
