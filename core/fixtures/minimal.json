@@ -435,5 +435,27 @@
         },
         "model": "accounts.timtecuser",
         "pk": 3
+    },
+    {
+        "fields": {
+            "brand_button": "Saiba Mais",
+            "brand_lead": "Conhe\u00e7a a \u00c9nois",
+            "brand_logo": "home_page_pictures/img_enois_referencia.png",
+            "brand_message": "A \u00c9nois | Ag\u00eancia Escola de Conte\u00fado Jovem desenvolve com a molecada os melhores produtos de comunica\u00e7\u00e3o (tamb\u00e9m jovem) do mercado. E escola livre de",
+            "greeting_background": "home_page_pictures/banner_home_2.jpg",
+            "greeting_button": "Saiba mais",
+            "greeting_message": "Conectamos\r\nestudantes\r\ninteressados\r\na um futuro\r\nbrilhante.",
+            "promoted_courses_button": "Todos os cursos.",
+            "promoted_courses_lead": "Learn from the experts.",
+            "promoted_courses_message": "Get the latest insights from Desk.com's customer service pros.",
+            "promoted_menthors_button": "Conhe\u00e7a todo o time.",
+            "promoted_menthors_lead": "Nosso time de mentores",
+            "promoted_menthors_message": "Mobile projects deserve to be shared, to be criticized, and to be refined. Save and access them anywhere from the cloud and share with team members, developers.",
+            "promoted_portfolios_button": "Outros trabalhos",
+            "promoted_portfolios_lead": "Portfolio",
+            "promoted_portfolios_message": "Get the latest insights from Desk."
+        },
+        "model": "homepage.homepage",
+        "pk": 1
     }
 ]
