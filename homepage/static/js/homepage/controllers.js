@@ -3,7 +3,6 @@
     var app = angular.module('homepage.controllers', []);
 
     app.controller('CoursesCarouselCtrl', ['$scope', function($scope) {
-        console.log('oi');
-        $scope.myInterval = 1000;
+        $scope.myInterval = 8000;
     }]);
 })(window.angular);
