@@ -91,14 +91,14 @@ urlpatterns = patterns(
     # Portfolio
     url(r'^portfolios/$',
         PortfoliosView.as_view(), name='portfolios'),
-    url(r'^portfolios/(?P<username>[\w.+-]+)?/$',
-        UserPortfoliosView.as_view(), name='user_portfolios'),
-    url(r'^portfolios/(?P<username>[\w.+-]+)?/portfolio/new/$',
-        CreatePortfolioView.as_view(), name='portfolio_new'),
-    url(r'^portfolios/(?P<username>[\w.+-]+)?/portfolio/(?P<pk>[1-9][0-9]*)/$',
+    url(r'^portfolios/(?P<pk>[1-9][0-9]*)/$',
         PortfolioView.as_view(), name='portfolio_view'),
-    url(r'^portfolios/(?P<username>[\w.+-]+)?/portfolio/(?P<pk>[1-9][0-9]*)/edit$',
+    url(r'^portfolios/(?P<pk>[1-9][0-9]*)/edit$',
         UpdatePortfolioView.as_view(), name='portfolio_edit'),
+    url(r'^my-portfolios/$',
+        UserPortfoliosView.as_view(), name='user_portfolios'),
+    url(r'^my-portfolios/new/$',
+        CreatePortfolioView.as_view(), name='portfolio_new'),
 
     # Teachers
     url(r'^teachers', TeachersView.as_view(), name='teachers'),

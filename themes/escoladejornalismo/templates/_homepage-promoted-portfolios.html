@@ -10,7 +10,7 @@
                 <div class="item-portfolio">
                     <img src="{% if portfolio.thumbnail  %}{{ portfolio.thumbnail.url }}{% endif %}" alt="" title=""/>
                     <div class="caption">
-                        <a href="{% url 'portfolio_view' username=portfolio.user.username pk=portfolio.pk %}">
+                        <a href="{% url 'portfolio_view' pk=portfolio.id %}">
                             {{ portfolio.name }}
                         </a>
                         <p>{{ portfolio.description }}</p>
