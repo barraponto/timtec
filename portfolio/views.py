@@ -70,7 +70,7 @@ class UserPortfoliosView(LoginRequiredMixin, ListView):
 class PortfoliosView(ListView):
     context_object_name = 'portfolios'
     template_name = "portfolios.html"
-    paginate_by = 12
+    paginate_by = 16
 
     def get_queryset(self):
         return Portfolio.objects.all().filter(home_published=True)
