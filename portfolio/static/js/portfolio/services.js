@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict';
-    /* Services */
 
+    /* Services */
     var app = angular.module('portfolio.services', []);
     app.factory('Portfolio', ['$resource', 'getRestOptions', function($resource, getRestOptions) {
 
@@ -14,13 +14,16 @@
             if(!this.status) this.status = 'draft';
             return this.$save();
         };
+
         Portfolio.prototype.hasVideo = function(){
             return this.video && this.video.youtube_id &&
                 this.video.youtube_id.length > 0;
         };
+
         getRestOptions('/api/portfolio').success(function(data) {
             Portfolio.fields = angular.copy(data.actions.POST);
         });
+
         return Portfolio;
     }]);
 
@@ -80,25 +83,25 @@
                 formData.append('csrfmiddlewaretoken',
                                 /csrftoken=(\w+)/.extract(document.cookie, 1));
 
-                    var oReq = createXMLHTTPObject();
-                    oReq.onreadystatechange = function(){
-                        if(this.readyState !== 4) return;
+                                var oReq = createXMLHTTPObject();
+                                oReq.onreadystatechange = function(){
+                                    if(this.readyState !== 4) return;
 
-                        var response = {};
-                        response.data = angular.fromJson(this.responseText || '{}');
-                        response.status = this.status;
+                                    var response = {};
+                                    response.data = angular.fromJson(this.responseText || '{}');
+                                    response.status = this.status;
 
-                        if( this.status === 200  ) {
-                            deferred.resolve(response);
-                        } else {
-                            deferred.reject(response);
-                        }
-                    };
+                                    if( this.status === 200  ) {
+                                        deferred.resolve(response);
+                                    } else {
+                                        deferred.reject(response);
+                                    }
+                                };
 
-                    oReq.open('POST', url, true);
-                    oReq.send(formData);
+                                oReq.open('POST', url, true);
+                                oReq.send(formData);
 
-                    return deferred.promise;
+                                return deferred.promise;
             };
         };
     }]);

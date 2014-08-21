@@ -14,6 +14,5 @@
         'ngResource',
         'youtube',
         'django',
-        'ngTagsInput'
     ]);
 })(window.angular);
