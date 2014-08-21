@@ -443,7 +443,9 @@ margin-top: -10%;
             .enroll-link {
               float: right;
               margin-right: 3%;
-
+              button {
+                text-transform: uppercase;
+              }
             }
             .btn {
               border-radius: 6px;
@@ -958,34 +960,35 @@ margin-top: -10%;
 
 .boxed {
   margin-bottom: 20px;
+  .inner {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 10px 10px 0 #dbdfe0;
+    color: #7f95a9;
+    overflow: hidden;
+    padding: 12px 20px;
+    &:after {
+      clear: both;
+      content: "";
+      display: block;
+    }
+    input {
+      width: 100%;
+    }
+    &.no-radius {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      padding: 0;
+    }
+    h2.divider, h3.divider {
+      margin: 10px 0;
+    }
+  }
 }
-.boxed .inner {
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 10px 10px 0 #dbdfe0;
-  color: #7f95a9;
-  overflow: hidden;
-  padding: 12px 20px;
-}
-.boxed .inner:after {
-  clear: both;
-  content: "";
-  display: block;
-}
-.boxed .inner input {
-  width: 100%;
-}
-.boxed .inner.no-radius {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.boxed .inner h1, .boxed .inner h2, .boxed .inner h3, .boxed .inner h4, .boxed .inner h5, .boxed .inner h6 {
-  margin: 0;
-  padding: 0;
-}
-.boxed .inner h2.divider, .boxed .inner h3.divider {
-  margin: 10px 0;
-}
+
 .boxed.no-padding .inner {
   padding: 0;
 }
