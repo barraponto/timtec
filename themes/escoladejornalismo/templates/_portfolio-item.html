@@ -4,7 +4,7 @@
             <img {% if portfolio.thumbnail %}src="{{portfolio.thumbnail.url}}"{% endif %} title="" alt=""/>
             <div>
                 <div>
-                    <h2>{{ portfolio.name }}</h2>
+                    <h2><a href="{% url 'portfolio_view' pk=portfolio.id %}">{{ portfolio.name }}</a></h2>
                     <p>{{ portfolio.description }}</p>
                 </div>
             </div>
