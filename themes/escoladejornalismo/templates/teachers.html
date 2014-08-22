@@ -4,10 +4,10 @@
 {% block content %}
 
 <!--  PORTFOLIO   -->
-<div id="portfolio">
+<div id="mentore">
     <div class="container">
-        <div class="header-portfolios">
-            <h1>Teachers</h1>
+        <div class="header">
+            <h2><i class="fa fa-angle-right"></i>{% trans 'Teachers' %}</h2>
         </div>
         <div class="row">
             {% for teacher in teachers %}
@@ -15,13 +15,6 @@
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                 <div class="boxed profile dark">
                     <div class="inner">
-                        <!-- Profile Title Start -->
-                        <div class="title">
-                            <a class="share-profile" href="{% url 'profile' username=teacher.username %}">
-                                Ver mais
-                            </a>
-                        </div>
-                        <!-- Profile Title End -->
 
                         <div class="row profile-data">
                             <!-- Left Side Start -->
@@ -33,18 +26,23 @@
                                 </div>
                                 <!-- Profile Avatar End -->
 
-                                <!-- Send Message Start -->
-                                <div class="send-msg">
-                                    <button type="button" class="btn btn-sm btn-default" onClick="window.location.href='mailto:{{ teacher.email }}';">Send Message</button>
-                                </div>
-                                <!-- Send Message End -->
-
                             </div>
                             <!-- Left Side End -->
 
                             <!-- Right Side Start -->
                             <div class="col-lg-7 col-md-7 col-sm-9 col-xs-8">
-                                <h3>{{ teacher.username }}</h3>
+                                <h3>{{ teacher.first_name }} {{ teacher.last_name }}</h3>
+                                <div class="send-msg">
+                                    <a class="btn btn-sm btn-default" href="{% url 'profile' username=teacher.username %}">
+                                        <i class="share-profile">Ver Mais</i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Right Side End -->
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-7 col-sm-9 col-xs-8">
                                 <ul class="icon-list list-unstyled">
                                     <li><i class="fa fa-envelope"></i>{{ teacher.email }}</li>
                                     <li><i class="fa fa-building-o"></i>Énois | Inteligência Jovem</li>
@@ -61,51 +59,19 @@
                                     </li>
                                     {% endif %}
                                 </ul>
-
                             </div>
-                            <!-- Right Side End -->
                         </div>
 
-                        <!-- Profile Stats Start -->
-                        <div class="row">
-                            <ul class="profile-stats">
-                                <li class="courses col-lg-12 col-md-6 col-sm-12 col-xs-12">
-                                    <h3>Joined Us</h3>
-                                    <p>{{ teacher.date_joined }}</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Profile Stats End -->
-
-                        <!-- Profile About Me Start -->
                         {% if teacher.biography %}
+                        <!-- Profile About Me Start -->
                         <div class="row about-me">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <h3>Biography</h3>
+                                <h3>{% trans 'Bio' %}</h3>
                                 <p>{{ teacher.biography }}</p>
                             </div>
                         </div>
-                        {% endif %}
                         <!-- Profile About Me End -->
-
-                        <!-- Profile Footer Start -->
-                        <div class="footer">
-                            <div class="col-lg-5 col-md-12 col-sm-6 col-xs-6">
-                                <h4>Follow this teacher at</h4>
-                            </div>
-                            <div class="col-lg-7 col-md-12 col-sm-6 col-xs-6">
-                                <ul class="profile-socials">
-                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
-                                    <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Profile Footer End -->
-
+                        {% endif %}
                     </div>
                 </div>
 
