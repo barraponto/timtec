@@ -17,7 +17,11 @@
   // COURSE SUMMARY - Course intro
   // ********************************************************************* //
   .summary {
+    margin-bottom: 20px;
     margin-top: 20px;
+    p {
+      color: #333;
+    }
   }
 
   // COURSE LESSONS - Course intro
@@ -28,12 +32,14 @@
       margin-bottom: 40px;
       margin-top: 20px;
       .title {
-        display:block;
-        font-size: 16px;
-        font-weight:regular;
+        display: block;
+        font-size: 25px;
+        font-weight: bolder;
+        color: #72c6de;
+        text-transform: capitalize;
       }
       .description {
-        font-size:13px;
+        font-size: 15px;
       }
       .editable {
         ul {
@@ -46,6 +52,9 @@
       }
       li {
         margin:36px 0;
+      }
+      .lesson-icon > p {
+        margin-top: 20px;
       }
     }
     // END LESSON

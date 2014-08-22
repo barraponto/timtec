@@ -263,6 +263,8 @@ body {
 
 #mentores h2{
    font-weight: bold;
+   font-size: 35px;
+   width: 75%;
 }
 #mentores .btn-section2 {
   border-radius: 0;
@@ -288,28 +290,28 @@ body {
 
 
 #mentores .slider-mentores{
-   display: block;
-   margin: 5% -40px 5% 50px;
-}
-#mentores .slider-mentores .slider{
-    padding-left: 6%;
+  display: block;
+  margin: 5% -40px 5% 50px;
+  p {
+    width: 120%;
+    margin: 0;
+    font-size: medium;
+  }
 }
 
 #mentores .img-mentores-slider {
-  width: 40%;
+  width: 50%;
 }
 #mentores .info-mentores {
   text-align: left;
   width: 70%;
+  height: 150px;
 }
 #mentores .info-mentores h5{
  margin-top: 9%;
 text-transform: uppercase;
 font-weight: bold;
 margin-bottom: auto;
-}
-#mentores .info-mentores p{
-  margin-top: 6px;
 }
 #mentores .carousel-control.left {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
@@ -319,22 +321,24 @@ margin-bottom: auto;
 }
 #mentores  .carousel-indicators .active {
     background-color: #FFC100;
-
 }
-#mentores   li.ng-scope {
-
+#mentores li.ng-scope {
   border: 0px none #FFC100;
 }
 
 #mentores .icon-next {
-   color: #ffffff;
-   font-size: 70px;
-   font-family: inherit;
+  color: #ffffff;
+  font-size: 70px;
+  font-family: inherit;
   top: 30%;
+  margin-right: -40px;
   cursor: e-resize;
 }
-#mentores .mentores-text{
+#mentores .mentores-text {
   margin-top: 3%;
+  p {
+    font-size: 18px;
+  }
 }
 #mentores .icon-prev {
   left: -25px;
@@ -352,7 +356,7 @@ margin-bottom: auto;
    margin-bottom: 3%;
 }
 #enois .text {
- position: absolute;
+ position: relative;
  color: #ffffff;
 }
 #enois img {
@@ -1311,4 +1315,26 @@ margin-top: -10%;
   text-align: center;
   vertical-align: middle;
   width: 80px;
+}
+
+
+// INSTRUCTOR ENOIS
+#instructors-info .instructor{
+  .media-body {
+    padding-top: 20px;
+    h4 {
+    color: #747474;
+    font-weight: bolder;
+    text-decoration: underline;
+    text-transform: uppercase;
+    }
+    a {
+      color:#747474;
+      font-size: 18px;
+      text-transform: capitalize;
+    }
+  }
+  img {
+    height: 80px;
+  }
 }
