@@ -5,12 +5,12 @@
                 <h2>{{ homepage.promoted_menthors_lead }}</h2>
                 <p>{{ homepage.promoted_menthors_message }}</p>
                 <div class="container-btn-section2">
-                    <a class="btn btn-outline-inverse btn-lg btn-section2" href="#">
+                  <a class="btn btn-outline-inverse btn-lg btn-section2" href="{% url 'teachers' %}">
                         {{ homepage.promoted_menthors_button }}
                     </a>
                 </div>
             </div>
-            <div class="col-sm-6 mentores-data">
+            <div class="col-sm-8 mentores-data">
                 <div class="slider-mentores">
                   {% include '_homepage-promoted-menthors-carousel.html' with slides=menthors_slides %}
                 </div>
