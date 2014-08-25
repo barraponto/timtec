@@ -1,7 +1,10 @@
+{% load thumbnail %}
 <section>
     <div class="col-sm-6 col-md-3">
         <div class="thumb-portfolio">
-            <img {% if portfolio.thumbnail %}src="{{portfolio.thumbnail.url}}"{% endif %} title="" alt=""/>
+            {% thumbnail portfolio.thumbnail "250x230" crop='center' as thumb %}
+            <img src="{{ thumb.url }}" title="" alt=""/>
+            {% endthumbnail %}
             <div>
                 <div>
                     <h2><a href="{% url 'portfolio_view' pk=portfolio.id %}">{{ portfolio.name }}</a></h2>
@@ -13,7 +16,7 @@
             <a href="{% url 'profile' username=portfolio.user.username %}">
                 <i class="fa fa-user fa-lg"></i>
                 {% if portfolio.user.first_name or portfolio.user.last_name %}
-                {{ portfolio.user }} {{ portfolio.user }}
+                {{ portfolio.user.get_full_name }}
                 {% else %}
                 {{ portfolio.user.username }}
                 {% endif %}

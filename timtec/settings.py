@@ -14,6 +14,7 @@ TIMTEC_THEME = os.getenv('TIMTEC_THEME', 'escoladejornalismo')  # don't forget t
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+THUMBNAIL_DEBUG = DEBUG
 
 SITE_ID = 1
 SITE_HOME = ''
@@ -472,6 +473,7 @@ INSTALLED_APPS = (
     'notes',
     'reports',
     # Escola de Jornalismo
+    'sorl.thumbnail',
     'taggit',
     'portfolio',
     'homepage',

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load thumbnail %}
+{% load staticfiles %}
 
 {% block content %}
 
@@ -22,7 +24,11 @@
 
                                 <!-- Profile Avatar Start -->
                                 <div class="profile-avatar">
-                                    <img alt="{{ teacher.username }}" src="{{ teacher.get_picture_url }}">
+                                    {% thumbnail teacher.picture "130x130" as thumb %}
+                                    <img alt="{{ teacher.username }}" src="{{ thumb.url }}">
+                                    {% empty %}
+                                    <img alt="{{ teacher.username }}" src="{% static 'img/avatar-default.png' %}">
+                                    {% endthumbnail %}
                                 </div>
                                 <!-- Profile Avatar End -->
 
