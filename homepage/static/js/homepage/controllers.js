@@ -5,4 +5,7 @@
     app.controller('CoursesCarouselCtrl', ['$scope', function($scope) {
         $scope.myInterval = 8000;
     }]);
+    app.controller('MenthorsCarouselCtrl', ['$scope', function($scope) {
+        $scope.myInterval = 8000;
+    }]);
 })(window.angular);

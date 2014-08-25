@@ -1,16 +1,16 @@
-<div class="slider" ng-controller="CoursesCarouselCtrl">
+<div class="slider" ng-controller="MenthorsCarouselCtrl">
     <carousel interval="myInterval">
         {% for slide in slides %}
-        <slide ng-repeat="row in coming_mentores_2">
+        <slide>
             {% for menthor in slide %}
-            <div class="col-sm-4" ng-repeat="user in row">
+            <div class="col-sm-4" style="height:360px;">
                 <a href="{% url 'profile' username=menthor.username %}" class="mentor-link" style="color: #ffffff">
                     <img class="img-circle img-responsive img-mentores-slider"
                         {% if menthor.picture %}
                         style="content:url({{ menthor.picture.url }})"
                         {% endif %}>
                     <div class="info-mentores">
-                        <h5 >{{ menthor.username }}</h5>
+                        <h5>{{ menthor.username }}</h5>
                         <p>{{ menthor.occupation }}</p>
                         <p>{{ menthor.biography }}</p>
                     </div>
