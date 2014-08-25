@@ -1,4 +1,4 @@
-(function(angular){
+(function(angular, undefined){
 
     var app = angular.module('portfolio.controllers', []);
 
@@ -13,70 +13,74 @@
                 '404': 'este curso não existe!'
             };
 
-            $scope.portfolio = new portfolio();
-            $scope.user = new user();
+            $scope.portfolio = new Portfolio();
+            $scope.user = new User();
             window.s = $scope;
 
             var player;
-            $scope.playerready = false;
-            youtubeplayerapi.loadplayer().then(function(p){
+            $scope.playerReady = false;
+            youtubePlayerApi.loadPlayer().then(function(p){
                 player = p;
-                $scope.playerready = true;
+                $scope.playerReady = true;
             });
 
             $scope.$watch('portfolio.video.youtube_id', function(vid, oldvid) {
                 if (!vid || vid === oldvid) return;
-                if (player) player.cuevideobyid(vid);
-                videodata.load(vid).then(function(data){
+                if (player) player.cueVideoById(vid);
+                VideoData.load(vid).then(function(data){
                     $scope.portfolio.video.name = data.entry.title.$t;
                 });
             });
 
-            function showfielderrors(response) {
+            function showFieldErrors(response) {
                 $scope.errors = response.data;
                 var messages = [];
-                for(var att in response.data) {
+                for (var att in response.data) {
                     var message = response.data[att];
-                    if(portfolio.fields && portfolio.fields[att]) {
-                        message = portfolio.fields[att].label + ': ' + message;
+                    if(Portfolio.fields && Portfolio.fields[att]) {
+                        message = Portfolio.fields[att].label + ': ' + message;
                     }
                     messages.push(message);
                 }
-                $scope.alert.error('encontramos alguns erros!', messages, true);
+                $scope.alert.error('Encontramos alguns erros!', messages, true);
             }
 
-            $scope.savethumb = function() {
+            $scope.saveThumb = function() {
                 if ($scope.thumbfile && $scope.portfolio.id) {
-                    var fu = new formupload();
-                    fu.addfield('thumbnail', $scope.thumbfile);
+                    if ($scope.thumbfile.size > 120000) {
+                        $scope.alert.warn('Por favor, escolha uma imagem menor.');
+                        return;
+                    }
+                    var fu = new FormUpload();
+                    fu.addField('thumbnail', $scope.thumbfile);
                     // return a new promise that file will be uploaded
-                    return fu.sendto('/api/portfoliothumbs/' + $scope.portfolio.id)
+                    return fu.sendTo('/api/portfoliothumbs/' + $scope.portfolio.id)
                     .then(function(){
                         $scope.alert.success('A imagem foi atualizada.');
                     });
                 }
             };
 
-            $scope.saveportfolio = function() {
-                if(!$scope.portfolio.hasvideo()){
+            $scope.savePortfolio = function() {
+                if(!$scope.portfolio.hasVideo()){
                     delete $scope.portfolio.video;
                 }
-                $scope.portfolio.description='Por favor, insira aqui uma descrição detalhada do portfolio';
-                $scope.portfolio.saveorupdate()
+                $scope.portfolio.description = 'Por favor, insira aqui uma descrição detalhada do portfolio';
+                $scope.portfolio.saveOrUpdate()
                 .then(function(){
-                    return $scope.savethumb();
+                    return $scope.saveThumb();
                 })
                 .then(function(){
-                    $scope.alert.success('alterações salvas com sucesso!');
-                })['catch'](showfielderrors);
+                    $scope.alert.success('Alterações salvas com sucesso!');
+                })['catch'](showFieldErrors);
             };
 
-            $scope.publishportfolio = function() {
+            $scope.publishPortfolio = function() {
                 $scope.portfolio.status = 'published';
-                $scope.saveportfolio();
+                $scope.savePortfolio();
             };
 
-            $scope.deleteportfolio = function() {
+            $scope.deletePortfolio = function() {
                 if(!confirm('Tem certeza que deseja remover este item do seu portfolio?')) return;
 
                 $scope.portfolio.$delete()
@@ -85,33 +89,26 @@
                 });
             };
 
-            var match = document.location.href.match(/portfolio\/([\w.+-]+)\/(new|\d+)/);
 
-            if( match ) {
-                console.log(window.userId);
-                if('new' === match[2]){
-                    $scope.portfolio.user = window.userId;
-                }
+            if (window.portfolioId !== undefined) {
+                $scope.portfolio.$get({id: portfolioId})
 
-                else{
-                    $scope.portfolio.$get({id: match[2]})
+                .then(function(portfolio){
+                    if(portfolio.video) {
+                        youtubePlayerApi.videoId = portfolio.video.youtube_id;
+                    }
+                    document.title = 'Portfolio: {0}'.format(portfolio.name);
+                    $scope.portfolios=Portfolio.query({status: 'published',user:portfolio.user});
+                    $scope.addThumb = !portfolio.thumbnail_url;
+                    // course_material and forum urls
+                    $scope.user.$get({id: portfolio.user});
+                    return $scope.user.promise;
 
-                    .then(function(portfolio){
-                        if(portfolio.video) {
-                            youtubePlayerApi.videoId = portfolio.video.youtube_id;
-                        }
-                        document.title = 'Portfolio: {0}'.format(portfolio.name);
-                        $scope.portfolios=Portfolio.query({status: 'published',user:portfolio.user});
-                        $scope.addThumb = !portfolio.thumbnail_url;
-                        // course_material and forum urls
-                        $scope.user.$get({id: portfolio.user});
-                        return $scope.user.promise;
-
-                    })['catch'](function(resp){
-                        $scope.alert.error(httpErrors[resp.status.toString()]);
-                    })['finally'](function(){
-                        $scope.statusList = Portfolio.fields.status.choices;
-                    });
-                }}
+                })['catch'](function(resp){
+                    $scope.alert.error(httpErrors[resp.status.toString()]);
+                })['finally'](function(){
+                    $scope.statusList = Portfolio.fields.status.choices;
+                });
+            }
         }]);
 })(window.angular);

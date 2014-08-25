@@ -89,6 +89,10 @@ class PortfolioViewSet(viewsets.ModelViewSet):
         response['Cache-Control'] = 'no-cache'
         return response
 
+    def create(self, request, *args, **kwargs):
+        request.DATA.update({'user': request.user.id})
+        return super(PortfolioViewSet, self).create(request, *args, **kwargs)
+
     def post(self, request, **kwargs):
         portfolio = self.get_object()
         serializer = PortfolioSerializer(portfolio, request.DATA)
