@@ -1,32 +1,37 @@
 // MAIN FOOTER
 // ********************************************************************* //
 #main-footer {
-  background: @brand-info;
-  margin-top: 60px;
+  background: #222222;
   padding: 40px 0;
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  color: white;
+  a {
+    color: white;
+  }
+
+  .footer-menu {
     li {
-      display: inline-block;
-      &:after {
-        color: #fff;
-        content: "•";
-        font-size: 18px;
-        margin: 0 8px 0 10px;
+      margin: 1em 0;
+    }
+    a {
+      text-transform: uppercase;
+      font-weight: bold;
       }
-      &:last-child:after {
-        content: "";
-      }
-      a {
-        color: #fff;
-        display: inline-block;
-        cursor: pointer;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+  }
+
+  .footer-contact {
+    p {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin: 1em 0;
+    }
+  }
+
+  .footer-extra {
+    p {
+      padding-bottom: 10px; 
+    }
+    form button {
+      padding: 7px 12px;
     }
   }
 }

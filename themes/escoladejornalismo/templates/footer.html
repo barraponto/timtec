@@ -2,10 +2,10 @@
 <div id="main-footer" class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-md-3">
+      <div class="footer-brand col-sm-6 col-md-3">
         <img class="img-responsive" src="/static/img/logo_enois.png">
       </div>
-      <div class="col-sm-6 col-md-3">
+      <div class="footer-menu col-sm-6 col-md-3">
         <ul class="list-unstyled list-menu">
           <li>
             <a href="#" data-toggle="modal" data-target="#modal-about">Quem Somos</a>
@@ -21,23 +21,19 @@
           </li>
         </ul>
       </div>
-      <div class="col-sm-6 col-md-3">
-        <ul class="list-unstyled list-menu">
-          <li>
-            <a href="#" data-toggle="modal" data-target="#modal-contact">Contato</a>
-          </li>
-          <address>
-            Rua João Brícola, 24<br>
-            18º andar<br>
-            São Paulo, SP<br>
-            <a href="mailto:contato@enoisconteudo.com.br">contato@enoisconteudo.com.br</a><br>
-            <abbr title="Phone">P:</abbr>906 123-4567
-          </address>
-        </ul>
+      <div class="footer-contact col-sm-6 col-md-3">
+        <p>
+          <a href="#" data-toggle="modal" data-target="#modal-contact">Contato</a>
+        </p>
+        <address>
+          Rua João Brícola, 24<br>
+          18º andar<br>
+          São Paulo, SP<br>
+          <a href="mailto:contato@enoisconteudo.com.br">contato@enoisconteudo.com.br</a><br>
+        </address>
       </div>
-      <div class="col-sm-6 col-md-3">
-        <ul class="list-unstyled list-menu">
-          <li>
+      <div class="footer-extra col-sm-6 col-md-3">
+          <p>
             <button class="btn btn-link fa-stack fa-fw btn-social">
               <i class="fa fa-circle fa-stack-2x"></i>
               <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -50,19 +46,16 @@
               <i class="fa fa-circle fa-stack-2x"></i>
               <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
             </button>
-          </li><br>
-          <li>
-            <a>RECEBA NOSSA NEWSLETTER</a>
-          </li>
-          <li>
-            <div class="input-group input-group-sm">
-              <input type="text" class="form-control input-sm" placeholder="Email Address">
+          </p>
+          <form>
+            <label for="newsletter-email">RECEBA NOSSA NEWSLETTER</label>
+            <div class="input-group">
+              <input id="newsletter-email" type="text" class="form-control" placeholder="Email Address">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button"><i class="fa fa-angle-right"></i></button>
               </span>
             </div>
-          </li>
-        </ul>
+          </form>
       </div>
     </div>
   </div>
