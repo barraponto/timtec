@@ -10,9 +10,8 @@
                         style="content:url({{ menthor.picture.url }})"
                         {% endif %}>
                     <div class="info-mentores">
-                        <h5>{{ menthor.username }}</h5>
+                        <h5>{{ menthor.get_full_name }}</h5>
                         <p>{{ menthor.occupation }}</p>
-                        <p>{{ menthor.biography }}</p>
                     </div>
                 </a>
             </div>
