@@ -1,54 +1,10 @@
-{% load i18n %}
-{% load usergroup %}
-
 <nav id="main-navbar" class="navbar navbar-static-top navMenu" role="navigation">
     <div class="container">
-        {% include '_navbar-header.html' %}
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
-            <ul class="nav navbar-nav" id="navv">
-                <li>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        Énóis <i class="fa fa-chevron-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-enois">
-                        <li><a href="#" data-toggle="modal" data-target="#modal-about">Quem somos</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#modal-contact">Contato</a></li>
-                    </ul>
-                </li>
-                <li><a href="{% url 'courses' %}">{% trans "Courses" %}</a></li>
-                <li><a href="{% url 'portfolios' %}">{% trans "Portfolio" %}</a></li>
-                <li><a href="{% url 'teachers' %}">{% trans "Teachers" %}</a></li>
-                {% if in_admin %}
-                <li class="navbar-divider"></li>
-                <li><a href="{% url 'administration.home' %}">{% trans "Admin" %}</a></li>
-                {% else %}
-                    {% ifusergroup professors %}
-                    <li class="navbar-divider"></li>
-                    <li><a href="{% url 'administration.home' %}">{% trans "Admin" %}</a></li>
-                    {% endifusergroup %}
-                {% endif %}
-                {% if user.is_authenticated %}
-                <li>
-                    <a class="username dropdown-toggle" data-toggle="dropdown" href="#">
-                        {{ user }} <i class="fa fa-chevron-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-user">
-                        <li><a href="{% url 'profile' %}">{% trans "Profile" %}</a></li>
-                        <li><a href="{% url 'profile_edit' %}">{% trans "Edit Profile and Account Settings" %}</a></li>
-                        <li class='divider'></li>
-                        <li><a href="{% url 'user_portfolios' %}">{% trans "My Portfolio" %}</a> </li>
-                        <li><a href="{% url 'user_courses' %}">{% trans "My Courses" %}</a></li>
-                        <li><a href="{% url 'user_notes' %}">{% trans "My Notes" %}</a></li>
-                        <li class='divider'></li>
-                        <li><a href="{% url 'timtec_logout' %}">{% trans "Logout" %}</a></li>
-                    </ul>
-                </li>
-                {% endif %}
-            </ul>
-            <ul class="nav navbar-nav navbar-right nav-social ">
-                {% include '_navbar-social.html' %}
-            </ul>
+            {% include '_navbar-social.html' %}
+            {% include '_navbar-menu.html' %}
+            {% include '_navbar-header.html' %}
         </div><!-- /.navbar-collapse -->
     </div>
 </nav>
