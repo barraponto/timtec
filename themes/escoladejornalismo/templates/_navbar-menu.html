@@ -4,16 +4,16 @@
 <ul class="nav navbar-nav navbar-right navbar-menu">
     <li>
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Énóis <i class="fa fa-chevron-down"></i>
+            Quem somos <i class="fa fa-chevron-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-enois">
-            <li><a href="#" data-toggle="modal" data-target="#modal-about">Quem somos</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modal-about">Conheça</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modal-contact">Contato</a></li>
         </ul>
     </li>
     <li><a href="{% url 'courses' %}">{% trans "Courses" %}</a></li>
-    <li><a href="{% url 'portfolios' %}">{% trans "Portfolio" %}</a></li>
-    <li><a href="{% url 'teachers' %}">{% trans "Teachers" %}</a></li>
+    <li><a href="{% url 'portfolios' %}">Trampos</a></li>
+    <li><a href="{% url 'teachers' %}">Mentores</a></li>
     {% if in_admin %}
     <li class="navbar-divider"></li>
     <li><a href="{% url 'administration.home' %}">{% trans "Admin" %}</a></li>
