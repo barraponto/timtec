@@ -1395,7 +1395,7 @@ msgstr "Seu email"
 #: themes/timtec/templates/account/password_reset_done.html:14
 #: themes/timtec/templates/account/verification_sent.html:16
 msgid "Check your inbox"
-msgstr "Verifica sua caixa de entrada"
+msgstr "Verifique sua caixa de entrada"
 
 #: themes/default/templates/account/password_reset_done.html:12
 #: themes/default/templates/account/password_reset_done.html:23
