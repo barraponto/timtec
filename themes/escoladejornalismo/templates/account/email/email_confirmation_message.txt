@@ -1,0 +1,11 @@
+E aí, tudo bem?
+
+Você se inscreveu na Escola de Jornalismo e é hora de começar! Com esse cadastro, você pode fazer qualquer um de nossos cursos, acessar os materiais complementares e até publicar seus trabalhos em nossa plataforma.
+
+Tá preparado?
+
+É só clicar no link para confirmar seu e-mail: {{ activate_url }}
+
+Bem-vindo ao nosso time!
+
+Equipe Énois
