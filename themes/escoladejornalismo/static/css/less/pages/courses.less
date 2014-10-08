@@ -1,19 +1,20 @@
 // COURSES PAGE
 // ********************************************************************* //
 
-#courses-page {
-  .course {
-    .thumb-wrapper {
-      @media (min-width: 540px) and (max-width: @screen-xs-max) {
-        float: left;
-        width: 50%;
-      }
-      @media (min-width: @screen-sm-min) {
-        float: left;
-        width: 40%;
-      }
+#courses .course-item {
+  .thumb-wrapper {
+    @media (min-width: 540px) and (max-width: @screen-xs-max) {
+      float: left;
+      width: 50%;
+    }
+    @media (min-width: @screen-sm-min) {
+      float: left;
+      width: 40%;
     }
   }
+}
+
+#courses-page {
 
   .filters {
     background: @gray-lighter;

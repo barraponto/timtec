@@ -1,0 +1,27 @@
+{% for course in courses %}
+<div class="course">
+  <a href="{% url "course_intro" course.slug %}" class="course-link">
+    <div class="thumb-wrapper">
+      <span class="mouseover"></span>
+      {% if course.home_thumbnail %}
+      <span class="thumb" style="background-image: url({{ course.home_thumbnail.url }})"></span>
+      {% endif %}
+    </div>
+    <div class="info-box">
+      <div class="info">
+        <h3>{{ course.name }}</h3>
+        <p class="instructors">{% for professor in course.professors.all %}{{ professor.get_full_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+        <p class="abstract">{{ course.abstract }}</p>
+      </div>
+      <div class="enroll">
+        <span>
+          <i class="fa fa-calendar"></i> {{ course.start_date |date:"M, Y" }}
+        </span>
+        <span class="enroll-link textright uppercase">
+          Começar curso <i class="fa fa-angle-right"></i>
+        </span>
+      </div>
+    </div>
+  </a>
+</div>
+{% endfor %}

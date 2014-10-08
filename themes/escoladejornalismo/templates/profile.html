@@ -55,6 +55,23 @@
             </fieldset>
         </div>
     </div>
+    <div id="courses" class="row">
+        {% if courses_given %}
+            <div class="page-header-double textleft top">
+                <h3 class="top">Cursos Oferecidos</h3>
+            </div>
+            {% for course in courses_given %}
+                {% include "_course-item.html" %}
+            {% endfor %}
+        {% elif courses_enrolled %}
+            <div class="page-header-double textleft top">
+                <h3 class="top">Cursos matriculados</h3>
+            </div>
+            {% for course in courses_given %}
+                {% include "_course-item.html" %}
+            {% endfor %}
+        {% endif %}
+    </div>
     {% if portfolios %}
     <div class="row">
         <div class="page-header-double textleft top">
