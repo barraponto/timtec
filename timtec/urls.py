@@ -72,51 +72,52 @@ urlpatterns = patterns(
     url(r'^admin/', include('administration.urls')),
 
     # Public browsing
-    url(r'^my-courses/$', UserCoursesView.as_view(), name='user_courses'),
+    url(r'^meus-cursos/$', UserCoursesView.as_view(), name='user_courses'),
     url(r'^accept_terms/$', AcceptTermsView.as_view(), name='accept_terms'),
-    url(r'^course/(?P<slug>[-a-zA-Z0-9_]+)/$', CourseView.as_view(), name='course_intro'),
-    url(r'^course/(?P<slug>[-a-zA-Z0-9_]+)/enroll/$', EnrollCourseView.as_view(), name='enroll_course'),
-    url(r'^course/(?P<course_slug>[-a-zA-Z0-9_]+)/lesson/(?P<slug>[-a-zA-Z0-9_]+)/$', LessonDetailView.as_view(), name='lesson'),
+    url(r'^curso/(?P<slug>[-a-zA-Z0-9_]+)/$', CourseView.as_view(), name='course_intro'),
+    url(r'^curso/(?P<slug>[-a-zA-Z0-9_]+)/matricula/$', EnrollCourseView.as_view(), name='enroll_course'),
+    url(r'^curso/(?P<course_slug>[-a-zA-Z0-9_]+)/aula/(?P<slug>[-a-zA-Z0-9_]+)/$', LessonDetailView.as_view(), name='lesson'),
     url(r'^html5/', TemplateView.as_view(template_name="html5.html")),
     url(r'^empty/', TemplateView.as_view(template_name="empty.html")),
     url(r'^contact/?$', ContactView.as_view(), name="contact"),
 
     # Services
     url(r'^api/', include(router.urls)),
+
     # Forum
     url(r'^forum/(?P<course_slug>[-a-zA-Z0-9_]+)/$', CourseForumView.as_view(), name='forum'),
     url(r'^forum/question/(?P<slug>[-a-zA-Z0-9_]+)/$', QuestionView.as_view(), name='forum_question'),
     url(r'^forum/question/add/(?P<course_slug>[-a-zA-Z0-9_]+)/$', QuestionCreateView.as_view(), name='forum_question_create'),
 
     # Portfolio
-    url(r'^portfolios/$',
+    url(r'^trampos/$',
         PortfoliosView.as_view(), name='portfolios'),
-    url(r'^portfolios/(?P<pk>[1-9][0-9]*)/$',
+    url(r'^trampos/(?P<pk>[1-9][0-9]*)/$',
         PortfolioView.as_view(), name='portfolio_view'),
-    url(r'^portfolios/(?P<pk>[1-9][0-9]*)/edit$',
+    url(r'^trampos/(?P<pk>[1-9][0-9]*)/editar$',
         UpdatePortfolioView.as_view(), name='portfolio_edit'),
-    url(r'^my-portfolios/$',
+    url(r'^meus-trampos/$',
         UserPortfoliosView.as_view(), name='user_portfolios'),
-    url(r'^my-portfolios/new/$',
+    url(r'^meus-trampos/novo/$',
         CreatePortfolioView.as_view(), name='portfolio_new'),
 
     # Teachers
-    url(r'^teachers', TeachersView.as_view(), name='teachers'),
+    url(r'^mentores', TeachersView.as_view(), name='teachers'),
 
     # Course Material
-    url(r'^course/(?P<slug>[-a-zA-Z0-9_]+)/material/file_upload/$', FileUploadView.as_view(), name='file_upload'),
-    url(r'^course/(?P<slug>[-a-zA-Z0-9_]+)/material/$', CourseMaterialView.as_view(), name='course_material'),
+    url(r'^curso/(?P<slug>[-a-zA-Z0-9_]+)/material/file_upload/$', FileUploadView.as_view(), name='file_upload'),
+    url(r'^curso/(?P<slug>[-a-zA-Z0-9_]+)/material/$', CourseMaterialView.as_view(), name='course_material'),
 
     # Notes
     url(r'^notes/(?P<username>[\w.+-]+)?$', UserNotesView.as_view(), name='user_notes'),
-    url(r'^course/(?P<course_slug>[-a-zA-Z0-9_]+)/mynotes/$', CourseNotesView.as_view(), name='user_course_notes'),
+    url(r'^curso/(?P<course_slug>[-a-zA-Z0-9_]+)/mynotes/$', CourseNotesView.as_view(), name='user_course_notes'),
 
     # Authentication
-    url(r'^login/', CustomLoginView.as_view(), name='timtec_login'),
-    url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='timtec_logout'),
+    url(r'^entrar/', CustomLoginView.as_view(), name='timtec_login'),
+    url(r'^sair/', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='timtec_logout'),
 
-    url(r'^profile/edit/?$', ProfileEditView.as_view(), name="profile_edit"),
-    url(r'^profile/(?P<username>[\w.+-]+)?/?$', EnoisProfileView.as_view(), name="profile"),
+    url(r'^perfil/editar/?$', ProfileEditView.as_view(), name="profile_edit"),
+    url(r'^perfil/(?P<username>[\w.+-]+)?/?$', EnoisProfileView.as_view(), name="profile"),
 
     # The django-allauth
     url(r'^accounts/', include('allauth.urls')),
