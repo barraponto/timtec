@@ -38,8 +38,10 @@ class FileUploadView(LoginRequiredMixin, CreateView):
 
 
 class CourseMaterialAdminView(AdminMixin, DetailView):
-    model = CourseMaterial
     context_object_name = 'course_material'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(CourseMaterial, course=self.kwargs.get('pk', '0'))
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
