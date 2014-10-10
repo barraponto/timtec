@@ -3,8 +3,9 @@
         <img src="{{ homepage.greeting_background.url }}" class="img-responsive">
         <div class="text">
             <p class="line1">{{ homepage.greeting_message }}</p>
-            <a class="btn btn-outline-inverse btn-lg btn-section1" href="#"
-                data-toggle="modal" data-target="#modal-about">{{ homepage.greeting_button }}</a>
+            <a class="btn btn-outline-inverse btn-lg btn-section1" 
+              href="{% url 'courses' %}">
+              {{ homepage.greeting_button }}</a>
         </div>
     </div>
-</div>
+ </div>

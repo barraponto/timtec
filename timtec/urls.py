@@ -62,7 +62,7 @@ router.register(r'portfoliothumbs', PortfolioThumbViewSet)
 urlpatterns = patterns(
     '',
     url(r'^$', HomePageView.as_view(), name='home_view'),
-    url(r'^courses', CoursesView.as_view(), name='courses'),
+    url(r'^cursos', CoursesView.as_view(), name='courses'),
 
     # Uncomment the next line to enable the admin:
     url(r'^django/admin/doc/', include('django.contrib.admindocs.urls')),
