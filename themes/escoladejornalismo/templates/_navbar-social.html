@@ -1,13 +1,13 @@
 {% load i18n %}
 <ul class="nav navbar-nav navbar-right navbar-social">
     {% if not user.is_authenticated %}
-    <li>
+    <li class="hidden-xs">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans 'Sign In' %}</a>
         <div class="dropdown-menu">
             {% include '_navbar-login.html' %}
         </div>
     </li>
-    <li>
+    <li class="hidden-xs">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans 'Sign Up' %}</a>
         <div class="dropdown-menu">
             {% include '_navbar-signup.html' %}

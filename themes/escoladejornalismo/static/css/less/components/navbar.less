@@ -37,12 +37,6 @@
   .submit {
     line-height: 2.5;
   }
-  .navbar-toggle {
-    &:hover,
-    &:focus {
-      background-color: #002c50;
-    }
-  }
   .navbar-divider {
     @media (min-width: @screen-sm-min) {
       box-shadow: inset 2px 0 0 rgba(255,255,255,.15);
@@ -89,9 +83,7 @@
   #main-navbar {
     color: #fff;
     margin-bottom: 0;
-    a {
-      color: #fff;
-    }
+
     label {
       line-height: 1;
     }
@@ -106,4 +98,18 @@
 
 .share-btn {
   background-color: #1d6fa5;
+}
+
+.navbar-brand {
+  max-width: 80%;
+  img {
+    max-width: 100%;
+  }
+}
+
+.navbar-toggle {
+  &:hover, &:focus {
+    background-color: #f9f9f9;
+  }
+  .icon-bar { background-color: #563d7c; }
 }
